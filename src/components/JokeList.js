@@ -2,8 +2,8 @@ import './ImageList.css';
 import React from 'react';
 import JokeCard from './JokeCard';
 
-const JokeList = props => {
-    const jokes = props.value.map((jokes, jokeIcon) => {
+const JokeList = ({jokes}) => {
+    jokes.map((jokes, jokeIcon) => {
         return <JokeCard icon={jokeIcon} jokeValue={jokes} />;
     });
 

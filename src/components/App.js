@@ -6,9 +6,9 @@ import JokeList from './JokeList';
 class App extends React.Component {
     state = { jokes: [] };
 
-    onSearchSubmit = async term => {
+    onSearchSubmit = async query => {
         const response = await chuck.get('/jokes/search', {
-            params: { query: term }
+            params: { query: query }
         });
 
         this.setState({ jokes: response.data.results });
