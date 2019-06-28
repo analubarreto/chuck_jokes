@@ -2,12 +2,19 @@ import './ImageList.css';
 import React from 'react';
 import JokeCard from './JokeCard';
 
-const JokeList = ({jokes}) => {
-    jokes.map((jokes, jokeIcon) => {
-        return <JokeCard icon={jokeIcon} jokeValue={jokes} />;
-    });
+import { MDBRow, MDBCol } from "mdbreact";
 
-    return <div className="image-list">{jokes}</div>;
-};
+const JokeList = props => {
+    const jokes = props.jokes.map(joke => {
+        return <JokeCard key={joke.id} joke={joke} />
+    });
+    return (
+        <MDBRow>
+            <MDBCol md="12" lg="4" className="image-list">
+                {jokes}
+            </MDBCol>
+        </MDBRow>
+    );
+}
 
 export default JokeList

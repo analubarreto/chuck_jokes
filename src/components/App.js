@@ -3,6 +3,8 @@ import chuck from '../api/chuck';
 import SearchBar from './SearchBar';
 import JokeList from './JokeList';
 
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+
 class App extends React.Component {
     state = { jokes: [] };
 
@@ -11,15 +13,22 @@ class App extends React.Component {
             params: { query: query }
         });
 
-        this.setState({ jokes: response.data.results });
+        console.log(response.data.result);
+
+        this.setState({ jokes: response.data.result });
     };
 
     render() {
+        console.log(this.state.jokes);
         return (
-            <div className="ui container" style={{ marginTop: '10px' }}>
-                <SearchBar onSubmit={this.onSearchSubmit} />
-                <JokeList jokes={this.state.jokes} />
-            </div>
+            <MDBContainer style={{ marginTop: '1em', marginLeft: '1em', marginRight: '1em' }}>
+                <MDBRow>
+                    <MDBCol size="12">
+                        <SearchBar onSubmit={this.onSearchSubmit} />
+                    </MDBCol>
+                </MDBRow>
+                <JokeList jokes={this.state.jokes} style={{ margin: 'auto' }} />
+            </MDBContainer>
         );
     }
 }
